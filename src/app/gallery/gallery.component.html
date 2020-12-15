@@ -1,0 +1,41 @@
+/**
+* @author Mohamed AIT BOUAAZA
+*/
+
+<p></p>
+<div class="container">
+    <div class="panel panel-primary">
+        <div class="panel-heading">Gallery Component</div>
+            <div class="panel-body">
+                <form #f="ngForm" (ngSubmit)="onSearch(f.value)">
+                    <div class="form-group">
+                        <label>Mot clé :</label>
+                        <input type="text" name="motcle" ngModel required [(ngModel)]="motcle">
+                        <button type="submit" class="btn btn-primary">chercher</button>
+                    </div>
+                </form>
+
+        <div class="row">
+                    <div *ngFor="let p of pagePhotos?.hits" class="col-md-3 col-xs-12">
+                            <div class="panel panel-primary hauteur">
+                                    <div class="panel-heading">{{p.tags}}</div>
+                                        <div class="panel-body">
+                                            <p>Size: <strong>{{p.imageWidth}} X {{p.imageHeight}}</strong></p>
+                                            <img src="{{p.previewURL}}">
+                                        </div>
+                            </div>
+                    </div>
+                    </div>
+                    <div class="row">
+                        <ul class="nav nav-pills">
+                            <li  *ngFor="let p of pages; let i=index" class="clickable">
+                                <a (click)="goToPage(i+1)">{{i+1}}</a>
+                            </li>
+                        </ul>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
